@@ -31,6 +31,21 @@ async function fetchWeatheDetails(){
 }
 
 
+async function getCustomWeatherDetails() {
+
+    let lat = 17.8384;
+    let lon = 74.3435;
+
+     const result = await fetch (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
+
+     const data = await result.json();
+
+     console.log(data);
+
+
+}
+
+
 async function getLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(showPosition);
