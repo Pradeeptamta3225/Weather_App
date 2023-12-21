@@ -8,10 +8,94 @@
 </head>
 <body>
     
+<div class="wrapper">
 
-Ram Ram Bhai Saareyaane
+    <h1>WEATHER APP</h1>
 
 
-<script src="script.js"></script>
+    <div class="tab-container">
+        <p class="tab" data-userWeather>Your Weather</p>
+        <p class="tab" data-searhWeather>Search Weather</p>
+        
+    </div>
+
+
+    <div class="weather-container">
+        
+         <!-- grant location  -->
+    <div>
+        <img src="location.png" width="80" height="80" loading="lazy">
+        <p>Grant Location Access</p>
+        <p>Allow Access to get Weather Information</p>
+        <button class="btn" data-grantAccess>Grant Access</button>
+    </div>
+
+    <!-- search form  -->
+
+    <form class="form-contanier" data-seachForm>
+        <input placeholder="Search for City" dataSearchInput>
+        <button class="btn">
+            <img src="search.png" width="20" height="20" loading="lazy">
+        </button>
+    </form>
+    </div>
+   
+
+<!-- loading screen counter  -->
+
+<div class="loading-container">
+    <img src="loading.gif" width="150" height="150" loading="lazy">
+    <p>Loading</p>
+</div>
+
+
+<!-- Show user Info  -->
+    <div class="user-info-container">
+
+
+        <!-- city name and flag  -->
+        <div class="name">
+            <p data-cityName></p>
+            <img src="" data-countryImage>
+        </div>
+
+<!-- information -->
+        <p data-weatherInfo></p>
+        <img src="" data-weatherImage>
+        <p data-weatherTemp></p>
+
+    </div>
+
+
+    <!-- information-cards  -->
+    <div class="parameater">
+
+        <div>
+            <img src="wind.png" >
+            <p>WINDSPEED</p>
+            <p data-windSpeed></p>
+        </div>
+    
+        <div>
+            <img src="humidity.png" >
+            <p>HUMIDITY</p>
+            <p data-humidity></p>
+        </div>
+    
+        <div>
+            <img src="cloud.png" >
+            <p>CLOUDS</p>
+            <p data-cloud></p>
+        </div>
+
+
+    </div>
+   
+
+
+</div>
+
+
+<script src="real.js"></script>
 </body>
 </html>
