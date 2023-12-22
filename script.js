@@ -66,3 +66,34 @@ function showPosition(position){
     console.log(lat);
     console.log(long);
 }
+
+
+
+
+let currentTab = userTab;
+
+const API_KEY = "";
+currentTab.classList.add("current-tab");
+
+
+function switchTab(clickedTab){
+    if(clickedTab != currentTab) {
+        currentTab.classList.remove("current-tab");
+        currentTab = clickedTab;
+        currentTab.classList.add("current-tab");
+
+    }
+}
+
+
+userTab.addEventListener("click",() => {
+
+
+    switchTab(userTab);
+});
+
+searchTab.addEventListener("click",() => {
+
+
+    switchTab(searchTab);
+});
