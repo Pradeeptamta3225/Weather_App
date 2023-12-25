@@ -9,16 +9,16 @@ const userInfoContainer = document.querySelector(".user-info-container");
 const grantAccessButton = document.querySelector("[data-grantAccess]");
 const searchInput = document.querySelector("[data-searchInput]");
 
-let oldTab = userTab;
+let clickedTab = userTab;
 const API_KEY = "d1845658f92b31c64bd94f06f7188c9c";
-oldTab.classList.add("current-tab");
+clickedTab.classList.add("current-tab");
 getfromSessionStorage();
 
-function switchTab(newTab) {
-    if(newTab != oldTab) {
-        oldTab.classList.remove("current-tab");
-        oldTab = newTab;
-        oldTab.classList.add("current-tab");
+function switchTab(currentTab) {
+    if(currentTab != clickedTab) {
+        clickedTab.classList.remove("current-tab");
+        clickedTab = currentTab;
+        clickedTab.classList.add("current-tab");
 
         if(!searchForm.classList.contains("active")) {
             userInfoContainer.classList.remove("active");
@@ -145,10 +145,10 @@ async function fetchSearchWeatherInfo(city) {
     userInfoContainer.classList.remove("active");
     grantAccessContainer.classList.remove("active");
 
+
+    // API CALL 
     try {
-        const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
-          );
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
         const data = await response.json();
         loadingScreen.classList.remove("active");
         userInfoContainer.classList.add("active");
