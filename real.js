@@ -8,6 +8,7 @@ const loadingScreen = document.querySelector(".loading-container");
 const userInfoContainer = document.querySelector(".user-info-container");
 const grantAccessButton = document.querySelector("[data-grantAccess]");
 const searchInput = document.querySelector("[data-searchInput]");
+const errorHandle = document.querySelector(".error-container");
 
 let clickedTab = userTab;
 const API_KEY = "d1845658f92b31c64bd94f06f7188c9c";
@@ -76,7 +77,8 @@ async function fetchUserWeatherInfo(coordinates) {
     }
     catch(err) {
         loadingScreen.classList.remove("active");
-        alert("Error Found");
+        errorHandle.classList.add("active");
+        
 
     }
 
@@ -99,10 +101,10 @@ function renderWeatherInfo(weatherInfo) {
     countryIcon.src = `https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`;
     desc.innerText = weatherInfo?.weather?.[0]?.description;
     weatherIcon.src = `http://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
-    temp.innerText = weatherInfo?.main?.temp;
-    windspeed.innertext = weatherInfo?.wind?.speed;
-    humidity.innertext = weatherInfo?.main?.humidity;
-    cloudiness.innerText = weatherInfo?.clouds?.all;
+    temp.innerText = `${weatherInfo?.main?.temp} °C`;
+    windspeed.innerText = `${weatherInfo?.wind?.speed} m/s`;
+    humidity.innerText = `${weatherInfo?.main?.humidity} %`;
+    cloudiness.innerText = `${weatherInfo?.clouds?.all} %`;
 
 
 }
@@ -112,7 +114,7 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(showPosition);
     }
     else {
-      alert("Location Not Found")
+      errorHandle.classList.add("active");
     }
 }
 
